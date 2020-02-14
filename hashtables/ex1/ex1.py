@@ -5,22 +5,22 @@ from hashtables import (HashTable,
 
 
 def get_indices_of_item_weights(weights, length, limit):
-    # Initialize hashtable and set its capacity
+    # Initialize hashtable and set its capacity to 16
     ht = HashTable(16)
     # For the first weight in the range from 0 to length...
-    for weight_1 in range (0, length):
+    for weight_1 in range(0, length):
         # Insert the hashtable, [weight key], and weight value
         hash_table_insert(ht, weights[weight_1], weight_1)
     # For the second weight in the range from 0 to length...
-    for weight_2 in range (0, length):
-        # Subtract weight 2 value from limit and assign result to matching_weight
+    for weight_2 in range(0, length):
+        # Subtract [weight value] from limit and assign result to matching_weight
         matching_weight = limit - weights[weight_2]
         # Retrieve the matching weight from hash table and assign to found_weight
         found_weight = hash_table_retrieve(ht, matching_weight)
         # If we found a weight...
         if found_weight:
             # Return the found weight and its partner weight_2
-            return(found_weight, weight_2) 
+            return (found_weight, weight_2)
     # Return None (means no matching weight was found)
     return None
 

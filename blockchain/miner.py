@@ -22,6 +22,7 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
+    # Intialize proof and assign zero so we can increment the variable later
     proof = 0
     # Convert last proof to a string with encode method and assign to variable
     last_proof_string = f"{last_proof}".encode()
