@@ -1,0 +1,99 @@
+Explain in detail the workings of a dynamic array:
+
+* What is the four step process to creating an array?
+1. Determine how big it needs to be
+2. Request a block of memory that fits those needs
+3. Receive the memory address of the reserved block
+4. Write your values into the array
+
+* How much memory does an array require?
+It depends how many integers there are. 
+Each integer requires four bytes of memory.
+Thus, we multiply four by the array's length.
+
+* How do we access the index of an array element?
+index * sizeof(type) + start_address
+
+*What is the runtime complexity of the search operation?
+O(1) -- arrays are the most time and space efficient operation
+
+*What is the difference between arrays and Python lists?
+Python lists are just arrays with less complexity and more built-in functionality
+
+*What is the process for adding an element to the end of an array?
+1. Take size of current array and increase it by one.
+2. Request a block of memory fitting the new size.
+3. Copy each element from old to new space (happens one element at a time).
+4. Free the memory from the old array.
+
+*What is the runtime complexity of the insert operation?
+O(n)
+
+*How does the insert process differ on Python?
+1. It allocates a few empty spaces to the end every time an array grows.
+2. Each time it grows, the amount of extra spaces will increase as well.
+3. Time complexity is usually O(1) but can be O(n).
+
+*How is this different from the way Python pushes elements to the front?
+1. Check if there's an empty space at the end.
+2. If not: allocate a new array, place first element, copy the rest, and free memory from old array.
+3. If so: move each element to the right (starting from the end) and place new element in front
+
+*What is the runtime complexity of the append operation?
+O(n^2)
+
+*Why is it so much faster to add an array to the back of array?
+In a best case scenario, you can simply add it to the end without operating on any other elements. This is typically 600x faster than adding to front.
+
+* What is the worse case scenario if you try to extend the storage size of a dynamic array?
+If the dynamic array doesn't have any room for a new item, this can cause a temporary slow down. Or O(n) time complexity.
+
+* What are some examples of hash tables?
+1. Associative arrays and dictionaries
+2. Objects (Python, Javascript, Ruby)
+3. Caches (Memcached)
+4. Dynamic programming, memorization
+
+* What is a hash table anyway?
+1. Devide for key/value storage and retrieval
+2. Contigious block of memory (next to each other)
+3. Key converted to an integer via a hash function
+4. Hashed key converted to array index via modulo function
+
+*What is a hash function?
+It achieves one-way mapping from arbitrary data to fixed data size and type
+
+*What are some different types of hash functions? 
+1. Deterministic (same input always results in same output)
+2. Uniform distribution (on average very far away from original input)
+3. Non-invertible (can't use the output to reverse engineer the input used)
+
+*What is the process for creating a hash table? 
+1. Declare an empty array (power of 2).
+2. Hash the key.
+3. Assign value to hash index.
+
+*What is the storage device for hash table elements?
+Linked lists. To retrieve a value, you traverse down the LL until you find matching key.
+
+*What is the time complexity of a linked list?
+O(n) for insertion, deletion, and retrieval. Ditto for space.
+
+*How does hash table resizing work?
+Use a load factor (number of entries / hash table capacity)
+When load factor passes a certain threshold, resizing occurs
+ -Create a new hash table with double capacity
+ -Copy elements from old to new one-at-a-time
+ -Resizing is O(n) but occurs at O(logn) frequency
+
+*Explain the purpose and meaning of blockchain.
+1. Blockchain is a data structure and support system holding a public ledger of transactions.
+2. It is not owned by any person or entity -- anyone can make a copy.
+3. Everyone has access to source code, but it's still secure due to cryptography.
+
+*What are the blocks, what is the chain? How is the data organized?
+Blocks hold index, time stamp, list of transactions, proof used to mine block, and hash of previous block.
+Blocks are listed in a chain and must be linked by matching hashes, which prevents people from stealing funds.
+Longest chain = what gets trusted. Thus, you'd have to change every single hash since they are all connected.
+ 
+Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
