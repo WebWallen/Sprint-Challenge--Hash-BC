@@ -96,4 +96,6 @@ Blocks hold index, time stamp, list of transactions, proof used to mine block, a
 Blocks are listed in a chain and must be linked by matching hashes, which prevents people from stealing funds.
 Longest chain = what gets trusted. Thus, you'd have to change every single hash since they are all connected.
  
-Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+*Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+Proof of work uses several complicated hashing mechanisms to make the task of guessing any identifying information near impossible.
+It "proves" that work happened by solving an arbitrary and complicated computational math problem. Risk = gains over 51% computational power.
