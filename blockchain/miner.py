@@ -9,7 +9,6 @@ from timeit import default_timer as timer
 
 import random
 
-
 def proof_of_work(last_proof):
     """
     Multi-Ouroboros of Work Algorithm
@@ -23,9 +22,16 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
+    # Intialize proof and assign zero so we can increment the variable later
     proof = 0
-    #  TODO: Your code here
-
+    # Convert last proof to a string with encode method and assign to variable
+    last_proof_string = f"{last_proof}".encode()
+    # Hash the string with sha256 hash library and use hexdigest to complete conversion
+    last_proof_hash = hashlib.sha256(last_proof_string).hexdigest()
+    # While the valid proof hasn't yet been completed on the hashified proof...
+    while valid_proof(last_proof_hash, proof) is False:
+        # Increment until it has
+        proof += 1
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
@@ -38,9 +44,12 @@ def valid_proof(last_hash, proof):
 
     IE:  last_hash: ...AE9123456, new hash 123456E88...
     """
-
-    # TODO: Your code here!
-    pass
+    # Convert proof to a string with encode method and assign to guess variable 
+    guess_string = f"{proof}".encode()
+    # Hash the guess string with sha256 hash library and use hexdigest to complete conversion
+    guess_hash = hashlib.sha256(guess_string).hexdigest()
+    # Convert last hash to a string and return a value where its last 6 numbers equal first 6 numbers of the new hash
+    return str(last_hash)[-6:] == guess_hash[:6] # use negative int to access last 6
 
 
 if __name__ == '__main__':
